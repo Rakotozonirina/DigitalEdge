@@ -16,6 +16,7 @@ import VerificationRequired from './pages/VerificationRequired';
 import ProtectedRoute from './components/layout/ProtectedRoute';
 import AdminRoute from './components/layout/AdminRoute';
 import VerifiedRoute from './components/layout/VerifiedRoute';
+import ApiDebugBadge from './components/layout/ApiDebugBadge';
 
 function App() {
   return (
@@ -91,6 +92,7 @@ function App() {
             />
           </Routes>
         </main>
+        <ApiDebugBadge />
         <Footer />
       </div>
     </Router>
