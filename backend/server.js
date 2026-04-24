@@ -21,7 +21,8 @@ const orderRoutes = require('./routes/orderRoutes');
 app.use(express.json());
 const allowedOrigins = [
   'http://localhost:5173', // Local frontend
-  process.env.FRONTEND_URL, // Deployed frontend URL
+  'https://digital-edge-g308ovo42-rakotozonirinas-projects.vercel.app', // Vercel deployment
+  process.env.FRONTEND_URL, // Configured frontend URL
 ].filter(Boolean);
 
 app.use(
