@@ -19,7 +19,24 @@ const orderRoutes = require('./routes/orderRoutes');
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+const allowedOrigins = [
+  'http://localhost:5173', // Local frontend
+  process.env.FRONTEND_URL, // Deployed frontend URL
+].filter(Boolean);
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true,
+  })
+);
 
 // Mount routes
 app.use('/api/auth', authRoutes);
