@@ -128,11 +128,11 @@ const AdminServices = () => {
 
   return (
     <div className="min-h-[calc(100vh-64px)] pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="mb-10 flex flex-col md:flex-row justify-between items-start md:items-center border-b border-dark-700 pb-8 gap-4">
+      <div className="mb-10 flex flex-col md:flex-row justify-between items-start md:items-center border-b border-light-700 dark:border-dark-700 pb-8 gap-4 transition-colors">
         <div>
           <span className="text-accent font-bold tracking-wider uppercase text-sm mb-2 block">Catalog Admin</span>
-          <h2 className="text-3xl font-bold text-white mb-1">Manage Services</h2>
-          <p className="text-neutral-400">Create, edit, and remove catalog entries without leaving the admin area.</p>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-1">Manage Services</h2>
+          <p className="text-gray-500 dark:text-neutral-400">Create, edit, and remove catalog entries without leaving the admin area.</p>
         </div>
         <div className="flex gap-3">
           <Link to="/admin">
@@ -142,18 +142,18 @@ const AdminServices = () => {
       </div>
 
       <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
-        <Card className="border-dark-700 bg-dark-800/50">
+        <Card className="border-light-700 dark:border-dark-700 bg-light-800/50 dark:bg-dark-800/50">
           <CardHeader>
             <CardTitle>{editingServiceId ? 'Edit Service' : 'New Service'}</CardTitle>
           </CardHeader>
           <CardContent>
             {error ? (
-              <div className="mb-5 rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+              <div className="mb-5 rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-600 dark:text-red-300">
                 {error}
               </div>
             ) : null}
             {successMessage ? (
-              <div className="mb-5 rounded-lg border border-green-500/20 bg-green-500/10 px-4 py-3 text-sm text-green-300">
+              <div className="mb-5 rounded-lg border border-green-500/20 bg-green-500/10 px-4 py-3 text-sm text-green-600 dark:text-green-300">
                 {successMessage}
               </div>
             ) : null}
@@ -173,7 +173,7 @@ const AdminServices = () => {
                   onChange={handleChange}
                   rows="5"
                   required
-                  className="w-full rounded-md border border-dark-700 bg-dark-800 px-4 py-3 text-sm text-white transition-colors placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  className="w-full rounded-md border border-light-700 dark:border-dark-700 bg-light-800 dark:bg-dark-800 px-4 py-3 text-sm text-gray-900 dark:text-white transition-colors placeholder:text-gray-500 dark:placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                 />
               </div>
 
@@ -204,7 +204,7 @@ const AdminServices = () => {
                   onChange={handleChange}
                   placeholder="Logo vectoriel, 3 revisions, fichiers source"
                 />
-                <p className="mt-2 text-xs text-neutral-500">Separate features with commas. The backend will store them as an array.</p>
+                <p className="mt-2 text-xs text-gray-500 dark:text-neutral-500">Separate features with commas. The backend will store them as an array.</p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
@@ -219,7 +219,7 @@ const AdminServices = () => {
           </CardContent>
         </Card>
 
-        <Card className="border-dark-700 bg-dark-800/50">
+        <Card className="border-light-700 dark:border-dark-700 bg-light-800/50 dark:bg-dark-800/50">
           <CardHeader>
             <CardTitle>Catalog Services</CardTitle>
           </CardHeader>
@@ -227,11 +227,11 @@ const AdminServices = () => {
             {loading ? (
               <div className="space-y-4">
                 {Array.from({ length: 3 }).map((_, index) => (
-                  <div key={index} className="h-28 rounded-xl bg-dark-800 animate-pulse" />
+                  <div key={index} className="h-28 rounded-xl bg-light-800 dark:bg-dark-800 animate-pulse" />
                 ))}
               </div>
             ) : services.length === 0 ? (
-              <div className="rounded-xl border border-dark-700 bg-dark-900/50 p-8 text-center text-neutral-400">
+              <div className="rounded-xl border border-light-700 dark:border-dark-700 bg-light-900/50 dark:bg-dark-900/50 p-8 text-center text-gray-500 dark:text-neutral-400">
                 No services yet. Use the form to create the first catalog item.
               </div>
             ) : (
@@ -239,10 +239,10 @@ const AdminServices = () => {
                 {services.map((service) => (
                   <div
                     key={service._id}
-                    className="rounded-2xl border border-dark-700 bg-dark-900/60 p-4 sm:p-5"
+                    className="rounded-2xl border border-light-700 dark:border-dark-700 bg-light-900/60 dark:bg-dark-900/60 p-4 sm:p-5 transition-colors"
                   >
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-                      <div className="h-24 w-full overflow-hidden rounded-xl border border-dark-700 bg-dark-800 sm:w-32">
+                      <div className="h-24 w-full overflow-hidden rounded-xl border border-light-700 dark:border-dark-700 bg-light-800 dark:bg-dark-800 sm:w-32">
                         {service.image ? (
                           <img
                             src={getUploadUrl(service.image)}
@@ -250,7 +250,7 @@ const AdminServices = () => {
                             className="h-full w-full object-cover"
                           />
                         ) : (
-                          <div className="flex h-full items-center justify-center text-xs uppercase tracking-widest text-neutral-500">
+                          <div className="flex h-full items-center justify-center text-xs uppercase tracking-widest text-gray-500 dark:text-neutral-500">
                             No image
                           </div>
                         )}
@@ -259,12 +259,12 @@ const AdminServices = () => {
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                           <div>
-                            <h3 className="text-lg font-semibold text-white">{service.title}</h3>
-                            <p className="mt-2 text-sm text-neutral-400">{service.description}</p>
+                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{service.title}</h3>
+                            <p className="mt-2 text-sm text-gray-500 dark:text-neutral-400">{service.description}</p>
                           </div>
                           <div className="text-left md:text-right">
                             <div className="text-lg font-bold text-accent">{service.price} €</div>
-                            <div className="mt-1 text-xs text-neutral-500">
+                            <div className="mt-1 text-xs text-gray-500 dark:text-neutral-500">
                               Updated {new Date(service.updatedAt).toLocaleDateString()}
                             </div>
                           </div>
@@ -275,7 +275,7 @@ const AdminServices = () => {
                             {service.features.map((feature) => (
                               <span
                                 key={`${service._id}-${feature}`}
-                                className="rounded-full border border-dark-700 bg-dark-800 px-3 py-1 text-xs text-neutral-300"
+                                className="rounded-full border border-light-700 dark:border-dark-700 bg-light-800 dark:bg-dark-800 px-3 py-1 text-xs text-gray-700 dark:text-neutral-300 transition-colors"
                               >
                                 {feature}
                               </span>

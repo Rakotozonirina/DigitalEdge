@@ -10,7 +10,7 @@ export const Card = React.forwardRef(({ className, children, hoverEffect = false
     <Component
       ref={ref}
       className={cn(
-        "rounded-xl border border-dark-700 bg-dark-800/50 backdrop-blur-sm text-white shadow-sm overflow-hidden",
+        "rounded-xl border border-light-700 dark:border-dark-700 bg-light-800/50 dark:bg-dark-800/50 backdrop-blur-sm text-gray-900 dark:text-white shadow-sm overflow-hidden transition-colors duration-300",
         className
       )}
       {...motionProps}
@@ -27,7 +27,7 @@ export const CardHeader = ({ className, ...props }) => (
   <div className={cn("flex flex-col space-y-1.5 p-6", className)} {...props} />
 )
 export const CardTitle = React.forwardRef(({ className, ...props }, ref) => (
-  <h3 ref={ref} className={cn("font-semibold leading-none tracking-tight text-xl text-white", className)} {...props} />
+  <h3 ref={ref} className={cn("font-semibold leading-none tracking-tight text-xl text-gray-900 dark:text-white", className)} {...props} />
 ))
 CardTitle.displayName = "CardTitle"
 

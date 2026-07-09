@@ -44,13 +44,13 @@ const Register = () => {
         className="max-w-md w-full"
       >
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-white mb-2">Créer un compte</h2>
-          <p className="text-neutral-400">Rejoignez-nous pour commander votre design</p>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Créer un compte</h2>
+          <p className="text-gray-500 dark:text-neutral-400">Rejoignez-nous pour commander votre design</p>
         </div>
         
-        <form onSubmit={handleSubmit} className="bg-dark-800/50 backdrop-blur-sm border border-dark-700 rounded-xl p-8 shadow-xl">
+        <form onSubmit={handleSubmit} className="bg-light-800/50 dark:bg-dark-800/50 backdrop-blur-sm border border-light-700 dark:border-dark-700 rounded-xl p-8 shadow-xl">
           {error && (
-            <div className="bg-red-500/10 border border-red-500/50 text-red-500 text-sm p-3 rounded-md mb-6">
+            <div className="bg-red-500/10 border border-red-500/50 text-red-600 dark:text-red-500 text-sm p-3 rounded-md mb-6">
               {error}
             </div>
           )}
@@ -106,7 +106,7 @@ const Register = () => {
             S'inscrire
           </Button>
           
-          <p className="text-center text-neutral-400 text-sm">
+          <p className="text-center text-gray-500 dark:text-neutral-400 text-sm">
             Déjà un compte ?{' '}
             <Link to="/login" className="text-accent hover:text-accent-hover transition-colors font-medium">
               Se connecter

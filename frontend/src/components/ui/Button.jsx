@@ -14,9 +14,9 @@ const Button = React.forwardRef(({
   
   const variants = {
     primary: "bg-accent text-white hover:bg-accent-hover shadow-lg shadow-accent/20",
-    secondary: "bg-dark-700 text-white hover:bg-dark-600",
-    outline: "border border-dark-700 bg-transparent hover:bg-dark-800 text-white",
-    ghost: "bg-transparent hover:bg-dark-800 text-neutral-300 hover:text-white",
+    secondary: "bg-light-700 dark:bg-dark-700 text-gray-900 dark:text-white hover:bg-light-600 dark:hover:bg-dark-600",
+    outline: "border border-light-700 dark:border-dark-700 bg-transparent hover:bg-light-800 dark:hover:bg-dark-800 text-gray-900 dark:text-white",
+    ghost: "bg-transparent hover:bg-light-800 dark:hover:bg-dark-800 text-gray-700 dark:text-neutral-300 hover:text-gray-900 dark:hover:text-white",
   };
 
   const sizes = {

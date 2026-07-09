@@ -7,9 +7,9 @@ const Input = React.forwardRef(({ className, type, error, ...props }, ref) => {
       <input
         type={type}
         className={cn(
-          "flex h-12 w-full rounded-md border border-dark-700 bg-dark-800 px-4 py-2 text-sm text-white transition-colors",
+          "flex h-12 w-full rounded-md border border-light-700 dark:border-dark-700 bg-light-800 dark:bg-dark-800 px-4 py-2 text-sm text-gray-900 dark:text-white transition-colors",
           "file:border-0 file:bg-transparent file:text-sm file:font-medium",
-          "placeholder:text-neutral-500",
+          "placeholder:text-gray-500 dark:placeholder:text-neutral-500",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:border-transparent",
           "disabled:cursor-not-allowed disabled:opacity-50",
           error && "border-red-500 focus-visible:ring-red-500",
@@ -19,7 +19,7 @@ const Input = React.forwardRef(({ className, type, error, ...props }, ref) => {
         {...props}
       />
       {error && (
-        <span className="text-xs text-red-500 mt-1 absolute -bottom-5 left-0">
+        <span className="text-xs text-red-600 dark:text-red-500 mt-1 absolute -bottom-5 left-0">
           {error}
         </span>
       )}

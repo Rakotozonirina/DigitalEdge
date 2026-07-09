@@ -51,14 +51,14 @@ const PaymentResult = ({ mode }) => {
 
   return (
     <div className="min-h-[calc(100vh-64px)] pt-24 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
-      <Card className="border-dark-700 bg-dark-800/50">
+      <Card className="border-light-700 dark:border-dark-700 bg-light-800/50 dark:bg-dark-800/50">
         <CardHeader className="text-center">
           <CardTitle>{mode === 'success' ? 'Paiement Stripe' : 'Paiement annule'}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6 text-center">
-          <p className="text-neutral-300">{loading ? 'Un instant...' : message}</p>
+          <p className="text-gray-600 dark:text-neutral-300">{loading ? 'Un instant...' : message}</p>
           {error ? (
-            <div className="rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+            <div className="rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-600 dark:text-red-300">
               {error}
             </div>
           ) : null}

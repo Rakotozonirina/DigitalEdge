@@ -17,85 +17,88 @@ import ProtectedRoute from './components/layout/ProtectedRoute';
 import AdminRoute from './components/layout/AdminRoute';
 import VerifiedRoute from './components/layout/VerifiedRoute';
 import ApiDebugBadge from './components/layout/ApiDebugBadge';
+import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen bg-dark-900 text-white">
-        <Navbar />
-        <main className="grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/catalogue" element={<Catalog />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/verification-required" element={<VerificationRequired />} />
-            
-            {/* Protected Routes (Clients) */}
-            <Route 
-              path="/dashboard" 
-              element={
-                <ProtectedRoute>
-                  <ClientDashboard />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/booking" 
-              element={
-                <VerifiedRoute>
-                  <BookingTunnel />
-                </VerifiedRoute>
-              } 
-            />
-            <Route 
-              path="/order/:id" 
-              element={
-                <ProtectedRoute>
-                  <OrderDetails />
-                </ProtectedRoute>
-              } 
-            />
-            <Route
-              path="/payment/success"
-              element={
-                <ProtectedRoute>
-                  <PaymentResult mode="success" />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/payment/cancel"
-              element={
-                <ProtectedRoute>
-                  <PaymentResult mode="cancel" />
-                </ProtectedRoute>
-              }
-            />
-            
-            {/* Admin Routes */}
-            <Route 
-              path="/admin" 
-              element={
-                <AdminRoute>
-                  <AdminDashboard />
-                </AdminRoute>
-              } 
-            />
-            <Route 
-              path="/admin/services" 
-              element={
-                <AdminRoute>
-                  <AdminServices />
-                </AdminRoute>
-              } 
-            />
-          </Routes>
-        </main>
-        <ApiDebugBadge />
-        <Footer />
-      </div>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <div className="flex flex-col min-h-screen bg-light-900 dark:bg-dark-900 text-gray-900 dark:text-white transition-colors duration-300">
+          <Navbar />
+          <main className="grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/catalogue" element={<Catalog />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/verification-required" element={<VerificationRequired />} />
+              
+              {/* Protected Routes (Clients) */}
+              <Route 
+                path="/dashboard" 
+                element={
+                  <ProtectedRoute>
+                    <ClientDashboard />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/booking" 
+                element={
+                  <VerifiedRoute>
+                    <BookingTunnel />
+                  </VerifiedRoute>
+                } 
+              />
+              <Route 
+                path="/order/:id" 
+                element={
+                  <ProtectedRoute>
+                    <OrderDetails />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route
+                path="/payment/success"
+                element={
+                  <ProtectedRoute>
+                    <PaymentResult mode="success" />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/payment/cancel"
+                element={
+                  <ProtectedRoute>
+                    <PaymentResult mode="cancel" />
+                  </ProtectedRoute>
+                }
+              />
+              
+              {/* Admin Routes */}
+              <Route 
+                path="/admin" 
+                element={
+                  <AdminRoute>
+                    <AdminDashboard />
+                  </AdminRoute>
+                } 
+              />
+              <Route 
+                path="/admin/services" 
+                element={
+                  <AdminRoute>
+                    <AdminServices />
+                  </AdminRoute>
+                } 
+              />
+            </Routes>
+          </main>
+          <ApiDebugBadge />
+          <Footer />
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 
