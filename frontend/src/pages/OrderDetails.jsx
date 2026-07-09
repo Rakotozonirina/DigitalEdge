@@ -15,7 +15,7 @@ const getStatusColor = (status) => {
     case 'livre':
       return 'text-green-500 bg-green-500/10 border-green-500/20';
     default:
-      return 'text-neutral-400 bg-neutral-800 border-neutral-700';
+      return 'text-gray-500 dark:text-neutral-400 bg-gray-100 dark:bg-neutral-800 border-gray-200 dark:border-neutral-700';
   }
 };
 
@@ -77,8 +77,8 @@ const OrderDetails = () => {
     return (
       <div className="min-h-[calc(100vh-64px)] pt-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <div className="space-y-4 animate-pulse">
-          <div className="h-24 rounded-xl bg-dark-800" />
-          <div className="h-64 rounded-xl bg-dark-800" />
+          <div className="h-24 rounded-xl bg-light-800 dark:bg-dark-800" />
+          <div className="h-64 rounded-xl bg-light-800 dark:bg-dark-800" />
         </div>
       </div>
     );
@@ -87,9 +87,9 @@ const OrderDetails = () => {
   if (error || !order) {
     return (
       <div className="min-h-[calc(100vh-64px)] pt-24 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto flex items-center justify-center">
-        <Card className="w-full p-8 text-center bg-dark-800 border-dark-700">
-          <h2 className="text-2xl font-bold text-white mb-3">Commande indisponible</h2>
-          <p className="text-neutral-400 mb-6">{error || 'Cette commande est introuvable.'}</p>
+        <Card className="w-full p-8 text-center bg-light-800 dark:bg-dark-800 border-light-700 dark:border-dark-700">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">Commande indisponible</h2>
+          <p className="text-gray-500 dark:text-neutral-400 mb-6">{error || 'Cette commande est introuvable.'}</p>
           <Link to={backLink}>
             <Button variant="outline" className="w-full">Retour</Button>
           </Link>
@@ -102,10 +102,10 @@ const OrderDetails = () => {
     <div className="min-h-[calc(100vh-64px)] pt-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
       <div className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h2 className="text-3xl font-bold text-white mb-2">Details de la commande</h2>
-          <p className="text-neutral-400">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Details de la commande</h2>
+          <p className="text-gray-500 dark:text-neutral-400">
             Numero de commande :
-            <span className="ml-2 rounded bg-dark-800 px-2 py-1 font-mono text-white">{order._id}</span>
+            <span className="ml-2 rounded bg-light-800 dark:bg-dark-800 px-2 py-1 font-mono text-gray-900 dark:text-white">{order._id}</span>
           </p>
         </div>
         <Link to={backLink}>
@@ -114,39 +114,39 @@ const OrderDetails = () => {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
-        <Card className="border-dark-700 bg-dark-800/50">
+        <Card className="border-light-700 dark:border-dark-700 bg-light-800/50 dark:bg-dark-800/50">
           <CardHeader>
             <CardTitle>{order.service?.title || 'Service indisponible'}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-xl border border-dark-700 bg-dark-900/70 p-4">
-                <p className="text-xs uppercase tracking-wider text-neutral-500 mb-2">Statut</p>
+              <div className="rounded-xl border border-light-700 dark:border-dark-700 bg-light-900/70 dark:bg-dark-900/70 p-4 transition-colors">
+                <p className="text-xs uppercase tracking-wider text-gray-500 dark:text-neutral-500 mb-2">Statut</p>
                 <span className={`inline-flex rounded-full border px-3 py-1 text-xs font-semibold uppercase ${getStatusColor(order.status)}`}>
                   {order.status}
                 </span>
               </div>
-              <div className="rounded-xl border border-dark-700 bg-dark-900/70 p-4">
-                <p className="text-xs uppercase tracking-wider text-neutral-500 mb-2">Paiement</p>
-                <p className="text-white font-medium">{order.paymentStatus || 'Non renseigne'}</p>
+              <div className="rounded-xl border border-light-700 dark:border-dark-700 bg-light-900/70 dark:bg-dark-900/70 p-4 transition-colors">
+                <p className="text-xs uppercase tracking-wider text-gray-500 dark:text-neutral-500 mb-2">Paiement</p>
+                <p className="text-gray-900 dark:text-white font-medium">{order.paymentStatus || 'Non renseigne'}</p>
               </div>
-              <div className="rounded-xl border border-dark-700 bg-dark-900/70 p-4">
-                <p className="text-xs uppercase tracking-wider text-neutral-500 mb-2">Montant</p>
-                <p className="text-white font-medium">{order.amount} €</p>
+              <div className="rounded-xl border border-light-700 dark:border-dark-700 bg-light-900/70 dark:bg-dark-900/70 p-4 transition-colors">
+                <p className="text-xs uppercase tracking-wider text-gray-500 dark:text-neutral-500 mb-2">Montant</p>
+                <p className="text-gray-900 dark:text-white font-medium">{order.amount} €</p>
               </div>
-              <div className="rounded-xl border border-dark-700 bg-dark-900/70 p-4">
-                <p className="text-xs uppercase tracking-wider text-neutral-500 mb-2">Creee le</p>
-                <p className="text-white font-medium">{new Date(order.createdAt).toLocaleString()}</p>
+              <div className="rounded-xl border border-light-700 dark:border-dark-700 bg-light-900/70 dark:bg-dark-900/70 p-4 transition-colors">
+                <p className="text-xs uppercase tracking-wider text-gray-500 dark:text-neutral-500 mb-2">Creee le</p>
+                <p className="text-gray-900 dark:text-white font-medium">{new Date(order.createdAt).toLocaleString()}</p>
               </div>
             </div>
 
-            <div className="rounded-xl border border-dark-700 bg-dark-900/70 p-5">
-              <p className="text-xs uppercase tracking-wider text-neutral-500 mb-3">Brief client</p>
-              <p className="whitespace-pre-wrap text-neutral-200 leading-relaxed">{order.brief}</p>
+            <div className="rounded-xl border border-light-700 dark:border-dark-700 bg-light-900/70 dark:bg-dark-900/70 p-5 transition-colors">
+              <p className="text-xs uppercase tracking-wider text-gray-500 dark:text-neutral-500 mb-3">Brief client</p>
+              <p className="whitespace-pre-wrap text-gray-700 dark:text-neutral-200 leading-relaxed">{order.brief}</p>
             </div>
 
-            <div className="rounded-xl border border-dark-700 bg-dark-900/70 p-5">
-              <p className="text-xs uppercase tracking-wider text-neutral-500 mb-3">Pieces jointes</p>
+            <div className="rounded-xl border border-light-700 dark:border-dark-700 bg-light-900/70 dark:bg-dark-900/70 p-5 transition-colors">
+              <p className="text-xs uppercase tracking-wider text-gray-500 dark:text-neutral-500 mb-3">Pieces jointes</p>
               {order.attachments?.length ? (
                 <div className="grid gap-3">
                   {order.attachments.map((filePath) => (
@@ -155,7 +155,7 @@ const OrderDetails = () => {
                       href={getUploadUrl(filePath)}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex items-center justify-between rounded-lg border border-dark-700 bg-dark-800 px-4 py-3 text-sm text-neutral-200 transition-colors hover:border-accent/40 hover:text-white"
+                      className="flex items-center justify-between rounded-lg border border-light-700 dark:border-dark-700 bg-light-800 dark:bg-dark-800 px-4 py-3 text-sm text-gray-700 dark:text-neutral-200 transition-colors hover:border-accent/40 hover:text-gray-900 dark:hover:text-white"
                     >
                       <span className="truncate pr-4">{formatFileLabel(filePath)}</span>
                       <span className="text-accent">Ouvrir</span>
@@ -163,37 +163,37 @@ const OrderDetails = () => {
                   ))}
                 </div>
               ) : (
-                <p className="text-neutral-400 text-sm">Aucune piece jointe sur cette commande.</p>
+                <p className="text-gray-500 dark:text-neutral-400 text-sm">Aucune piece jointe sur cette commande.</p>
               )}
             </div>
           </CardContent>
         </Card>
 
-        <Card className="border-dark-700 bg-dark-800/50">
+        <Card className="border-light-700 dark:border-dark-700 bg-light-800/50 dark:bg-dark-800/50">
           <CardHeader>
             <CardTitle>Informations</CardTitle>
           </CardHeader>
           <CardContent className="space-y-5">
             <div>
-              <p className="text-xs uppercase tracking-wider text-neutral-500 mb-2">Client</p>
-              <p className="text-white font-medium">{order.client?.name || user?.name}</p>
-              <p className="text-sm text-neutral-400">{order.client?.email || user?.email}</p>
+              <p className="text-xs uppercase tracking-wider text-gray-500 dark:text-neutral-500 mb-2">Client</p>
+              <p className="text-gray-900 dark:text-white font-medium">{order.client?.name || user?.name}</p>
+              <p className="text-sm text-gray-500 dark:text-neutral-400">{order.client?.email || user?.email}</p>
             </div>
 
             <div>
-              <p className="text-xs uppercase tracking-wider text-neutral-500 mb-2">Service</p>
-              <p className="text-white font-medium">{order.service?.title || 'Service indisponible'}</p>
+              <p className="text-xs uppercase tracking-wider text-gray-500 dark:text-neutral-500 mb-2">Service</p>
+              <p className="text-gray-900 dark:text-white font-medium">{order.service?.title || 'Service indisponible'}</p>
               {order.service?.price !== undefined ? (
-                <p className="text-sm text-neutral-400">Tarif catalogue : {order.service.price} €</p>
+                <p className="text-sm text-gray-500 dark:text-neutral-400">Tarif catalogue : {order.service.price} €</p>
               ) : null}
             </div>
 
             <div>
-              <p className="text-xs uppercase tracking-wider text-neutral-500 mb-2">Mise a jour</p>
-              <p className="text-sm text-neutral-300">{new Date(order.updatedAt).toLocaleString()}</p>
+              <p className="text-xs uppercase tracking-wider text-gray-500 dark:text-neutral-500 mb-2">Mise a jour</p>
+              <p className="text-sm text-gray-600 dark:text-neutral-300">{new Date(order.updatedAt).toLocaleString()}</p>
             </div>
 
-            <div className="rounded-xl border border-accent/20 bg-accent/10 p-4 text-sm text-neutral-200">
+            <div className="rounded-xl border border-accent/20 bg-accent/10 p-4 text-sm text-gray-700 dark:text-neutral-200">
               Cette page affiche maintenant les donnees reelles de la commande et respecte les autorisations backend.
             </div>
 

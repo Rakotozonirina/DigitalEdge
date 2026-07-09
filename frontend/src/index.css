@@ -5,7 +5,7 @@
 
 @layer base {
   body {
-    @apply bg-dark-900 text-white font-sans antialiased selection:bg-accent selection:text-white;
+    @apply bg-light-900 dark:bg-dark-900 text-gray-900 dark:text-white font-sans antialiased selection:bg-accent selection:text-white;
   }
 }
 
@@ -14,9 +14,16 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+.dark ::-webkit-scrollbar-track {
   background: #0f1115; 
 }
 ::-webkit-scrollbar-thumb {
+  background: #94a3b8; 
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
   background: #2b2f3a; 
   border-radius: 4px;
 }

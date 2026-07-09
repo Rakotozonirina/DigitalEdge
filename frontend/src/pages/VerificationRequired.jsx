@@ -57,34 +57,34 @@ const VerificationRequired = () => {
   return (
     <div className="min-h-[calc(100vh-64px)] px-4 pb-16 pt-24">
       <div className="mx-auto max-w-2xl">
-        <Card hoverEffect={false} className="border-dark-700 bg-dark-800/50">
+        <Card hoverEffect={false} className="border-light-700 dark:border-dark-700 bg-light-800/50 dark:bg-dark-800/50">
           <CardHeader className="text-center">
             <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400">
               <ShieldAlert size={28} />
             </div>
             <CardTitle>Verification d&apos;email requise</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6 text-center text-neutral-300">
+          <CardContent className="space-y-6 text-center text-gray-600 dark:text-neutral-300">
             <p>
               Votre compte est bien connecte, mais vous devez verifier votre adresse email avant de pouvoir confirmer une commande.
             </p>
-            <div className="rounded-xl border border-dark-700 bg-dark-900/70 p-5">
-              <div className="mb-2 flex items-center justify-center gap-2 text-sm uppercase tracking-wide text-neutral-500">
+            <div className="rounded-xl border border-light-700 dark:border-dark-700 bg-light-900/70 dark:bg-dark-900/70 p-5 transition-colors">
+              <div className="mb-2 flex items-center justify-center gap-2 text-sm uppercase tracking-wide text-gray-500 dark:text-neutral-500">
                 <Mail size={16} />
                 Email du compte
               </div>
-              <p className="font-medium text-white">{user.email}</p>
+              <p className="font-medium text-gray-900 dark:text-white">{user.email}</p>
             </div>
-            <p className="text-sm text-neutral-400">
+            <p className="text-sm text-gray-500 dark:text-neutral-400">
               Ouvrez le message de verification recu par email, puis revenez ici une fois la verification terminee.
             </p>
             {successMessage ? (
-              <div className="rounded-xl border border-green-500/20 bg-green-500/10 px-4 py-3 text-sm text-green-300">
+              <div className="rounded-xl border border-green-500/20 bg-green-500/10 px-4 py-3 text-sm text-green-600 dark:text-green-300">
                 {successMessage}
               </div>
             ) : null}
             {errorMessage ? (
-              <div className="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+              <div className="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-600 dark:text-red-300">
                 {errorMessage}
               </div>
             ) : null}

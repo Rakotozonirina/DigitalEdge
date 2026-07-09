@@ -86,15 +86,15 @@ const BookingTunnel = () => {
   return (
     <div className="min-h-[calc(100vh-64px)] pt-24 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
       <div className="mb-10 text-center">
-        <h2 className="text-3xl font-extrabold text-white mb-4">
+        <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-4">
           Commander : {loadingService ? 'Chargement...' : selectedService?.title || 'Service indisponible'}
         </h2>
         <div className="flex items-center justify-center gap-4 text-sm font-medium">
-          <span className={`px-4 py-2 rounded-full transition-colors ${step >= 1 ? 'bg-accent/20 text-accent border border-accent/30' : 'text-neutral-500'}`}>
+          <span className={`px-4 py-2 rounded-full transition-colors ${step >= 1 ? 'bg-accent/20 text-accent border border-accent/30' : 'text-gray-500 dark:text-neutral-500'}`}>
             1. Brief Creatif
           </span>
-          <span className="text-neutral-600">------&gt;</span>
-          <span className={`px-4 py-2 rounded-full transition-colors ${step >= 2 ? 'bg-accent/20 text-accent border border-accent/30' : 'text-neutral-500 border border-transparent'}`}>
+          <span className="text-gray-600 dark:text-neutral-600">------&gt;</span>
+          <span className={`px-4 py-2 rounded-full transition-colors ${step >= 2 ? 'bg-accent/20 text-accent border border-accent/30' : 'text-gray-500 dark:text-neutral-500 border border-transparent'}`}>
             2. Confirmation
           </span>
         </div>
@@ -102,15 +102,15 @@ const BookingTunnel = () => {
 
       <Card hoverEffect={false} className="p-8 md:p-10">
         {error ? (
-          <div className="mb-6 rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+          <div className="mb-6 rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-600 dark:text-red-300">
             {error}
           </div>
         ) : null}
 
         {loadingService ? (
-          <div className="h-40 animate-pulse rounded-xl bg-dark-800" />
+          <div className="h-40 animate-pulse rounded-xl bg-light-800 dark:bg-dark-800" />
         ) : !selectedService ? (
-          <div className="rounded-lg border border-dark-700 bg-dark-900 p-6 text-center text-neutral-400">
+          <div className="rounded-lg border border-light-700 dark:border-dark-700 bg-light-900 dark:bg-dark-900 p-6 text-center text-gray-500 dark:text-neutral-400">
             Ce service n&apos;est plus disponible.
           </div>
         ) : (
@@ -119,13 +119,13 @@ const BookingTunnel = () => {
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
                 <div className="mb-6">
                   <Label htmlFor="brief" className="text-lg mb-2">Decrivez votre besoin creatif</Label>
-                  <p className="text-sm text-neutral-400 mb-4">
+                  <p className="text-sm text-gray-500 dark:text-neutral-400 mb-4">
                     Parlez-nous de vos objectifs, de votre cible et de vos preferences. Plus il y a de details, mieux c&apos;est.
                   </p>
                   <textarea
                     id="brief"
                     rows="6"
-                    className="w-full rounded-md border border-dark-700 bg-dark-900 px-4 py-3 text-sm text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent resize-none placeholder:text-neutral-600"
+                    className="w-full rounded-md border border-light-700 dark:border-dark-700 bg-light-900 dark:bg-dark-900 px-4 py-3 text-sm text-gray-900 dark:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent resize-none placeholder:text-gray-500 dark:placeholder:text-neutral-600 transition-colors"
                     placeholder="Bonjour, je souhaite moderniser l'image de ma boutique de fleurs..."
                     value={brief}
                     onChange={(e) => setBrief(e.target.value)}
@@ -138,40 +138,40 @@ const BookingTunnel = () => {
                     id="attachments"
                     type="file"
                     multiple
-                    className="pt-2 bg-dark-900 text-neutral-400"
+                    className="pt-2 bg-light-900 dark:bg-dark-900 text-gray-600 dark:text-neutral-400"
                     onChange={(e) => setAttachments(Array.from(e.target.files || []))}
                   />
-                  <p className="text-xs text-neutral-500 mt-2">Formats acceptes: .png, .jpg, .pdf, .doc, .xlsx, .zip, .txt.</p>
+                  <p className="text-xs text-gray-500 dark:text-neutral-500 mt-2">Formats acceptes: .png, .jpg, .pdf, .doc, .xlsx, .zip, .txt.</p>
                   {attachments.length ? (
-                    <p className="mt-2 text-xs text-neutral-400">{attachments.length} fichier(s) selectionne(s)</p>
+                    <p className="mt-2 text-xs text-gray-500 dark:text-neutral-400">{attachments.length} fichier(s) selectionne(s)</p>
                   ) : null}
                 </div>
-                <div className="flex justify-end pt-4 border-t border-dark-700">
+                <div className="flex justify-end pt-4 border-t border-light-700 dark:border-dark-700">
                   <Button type="submit" size="lg">Continuer vers le recapitulatif</Button>
                 </div>
               </motion.div>
             ) : (
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
                 <h3 className="text-xl font-semibold mb-6">Recapitulatif de la commande</h3>
-                <div className="bg-dark-900 rounded-xl p-6 mb-8 border border-dark-700 space-y-4">
+                <div className="bg-light-900 dark:bg-dark-900 rounded-xl p-6 mb-8 border border-light-700 dark:border-dark-700 space-y-4 transition-colors">
                   <div className="flex justify-between items-center text-lg">
-                    <span className="text-neutral-400">Service selectionne</span>
-                    <span className="font-semibold text-white">{selectedService.title}</span>
+                    <span className="text-gray-500 dark:text-neutral-400">Service selectionne</span>
+                    <span className="font-semibold text-gray-900 dark:text-white">{selectedService.title}</span>
                   </div>
-                  <div className="flex justify-between items-start gap-4 border-t border-dark-700 pt-4">
-                    <span className="text-neutral-400">Brief</span>
-                    <span className="max-w-md text-right text-sm text-neutral-300">{brief}</span>
+                  <div className="flex justify-between items-start gap-4 border-t border-light-700 dark:border-dark-700 pt-4">
+                    <span className="text-gray-500 dark:text-neutral-400">Brief</span>
+                    <span className="max-w-md text-right text-sm text-gray-600 dark:text-neutral-300">{brief}</span>
                   </div>
-                  <div className="flex justify-between border-t border-dark-700 pt-4 mt-4 text-xl font-bold">
-                    <span className="text-white">Prix estimatif</span>
+                  <div className="flex justify-between border-t border-light-700 dark:border-dark-700 pt-4 mt-4 text-xl font-bold">
+                    <span className="text-gray-900 dark:text-white">Prix estimatif</span>
                     <span className="text-accent">{selectedService.price > 0 ? `${selectedService.price} €` : 'Sur devis'}</span>
                   </div>
                 </div>
-                <div className="bg-blue-500/10 border border-blue-500/20 text-blue-400 p-4 rounded-lg mb-8 text-sm leading-relaxed">
+                <div className="bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 p-4 rounded-lg mb-8 text-sm leading-relaxed">
                   <span className="font-semibold block mb-1">Information importante</span>
                   En confirmant, votre projet sera enregistre puis redirige vers Stripe en mode test pour effectuer le paiement si ce service a un tarif.
                 </div>
-                <div className="flex justify-between items-center pt-4 border-t border-dark-700">
+                <div className="flex justify-between items-center pt-4 border-t border-light-700 dark:border-dark-700">
                   <Button type="button" variant="ghost" onClick={() => setStep(1)}>Retour</Button>
                   <Button type="submit" isLoading={isSubmitting} size="lg" className="shadow-lg shadow-accent/20">
                     Confirmer et payer

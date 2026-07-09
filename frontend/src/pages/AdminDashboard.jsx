@@ -79,17 +79,17 @@ const AdminDashboard = () => {
       case 'livre':
         return 'text-green-500 bg-green-500/10 border-green-500/20';
       default:
-        return 'text-neutral-400 bg-neutral-800 border-neutral-700';
+        return 'text-gray-500 dark:text-neutral-400 bg-gray-100 dark:bg-neutral-800 border-gray-200 dark:border-neutral-700';
     }
   };
 
   return (
     <div className="min-h-[calc(100vh-64px)] pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="mb-10 flex flex-col md:flex-row justify-between items-start md:items-center border-b border-dark-700 pb-8 gap-4">
+      <div className="mb-10 flex flex-col md:flex-row justify-between items-start md:items-center border-b border-light-700 dark:border-dark-700 pb-8 gap-4 transition-colors">
         <div>
           <span className="text-accent font-bold tracking-wider uppercase text-sm mb-2 block">Acces Restreint</span>
-          <h2 className="text-3xl font-bold text-white mb-1">Panel Administrateur</h2>
-          <p className="text-neutral-400">Gerez les commandes de vos clients et modifiez leurs statuts en un clic.</p>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-1">Panel Administrateur</h2>
+          <p className="text-gray-500 dark:text-neutral-400">Gerez les commandes de vos clients et modifiez leurs statuts en un clic.</p>
         </div>
         <div className="flex gap-3">
           <Link to="/admin/services">
@@ -99,15 +99,15 @@ const AdminDashboard = () => {
         </div>
       </div>
 
-      <Card hoverEffect={false} className="border-dark-700 overflow-hidden">
+      <Card hoverEffect={false} className="border-light-700 dark:border-dark-700 overflow-hidden">
         {error ? (
-          <div className="border-b border-red-500/20 bg-red-500/10 px-6 py-4 text-sm text-red-300">
+          <div className="border-b border-red-500/20 bg-red-500/10 px-6 py-4 text-sm text-red-600 dark:text-red-300">
             {error}
           </div>
         ) : null}
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm text-neutral-300">
-            <thead className="bg-dark-800/80 text-xs uppercase font-semibold text-neutral-400 border-b border-dark-700">
+          <table className="w-full text-left text-sm text-gray-700 dark:text-neutral-300">
+            <thead className="bg-light-800/80 dark:bg-dark-800/80 text-xs uppercase font-semibold text-gray-500 dark:text-neutral-400 border-b border-light-700 dark:border-dark-700">
               <tr>
                 <th scope="col" className="px-6 py-4">Client</th>
                 <th scope="col" className="px-6 py-4">Service commande</th>
@@ -119,13 +119,13 @@ const AdminDashboard = () => {
             <tbody>
               {loading ? (
                 <tr>
-                  <td colSpan="5" className="px-6 py-12 text-center text-neutral-500">
+                  <td colSpan="5" className="px-6 py-12 text-center text-gray-500 dark:text-neutral-500">
                     Chargement des commandes de l&apos;agence...
                   </td>
                 </tr>
               ) : orders.length === 0 ? (
                 <tr>
-                  <td colSpan="5" className="px-6 py-12 text-center text-neutral-500">
+                  <td colSpan="5" className="px-6 py-12 text-center text-gray-500 dark:text-neutral-500">
                     Aucune commande a afficher.
                   </td>
                 </tr>
@@ -136,11 +136,11 @@ const AdminDashboard = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: index * 0.05 }}
-                    className="border-b border-dark-700/50 hover:bg-dark-800/40 transition-colors"
+                    className="border-b border-light-700/50 dark:border-dark-700/50 hover:bg-light-800/40 dark:hover:bg-dark-800/40 transition-colors"
                   >
                     <td className="px-6 py-4">
-                      <div className="font-medium text-white">{order.client?.name || 'Client inconnu'}</div>
-                      <div className="font-normal text-xs text-neutral-500 mt-1">{order.client?.email}</div>
+                      <div className="font-medium text-gray-900 dark:text-white">{order.client?.name || 'Client inconnu'}</div>
+                      <div className="font-normal text-xs text-gray-500 dark:text-neutral-500 mt-1">{order.client?.email}</div>
                     </td>
                     <td className="px-6 py-4">
                       <div className="font-medium">{order.service?.title || 'Service supprime'}</div>
@@ -157,7 +157,7 @@ const AdminDashboard = () => {
                     <td className="px-6 py-4 text-right">
                       <div className="flex items-center justify-end gap-3">
                         <select
-                          className="bg-dark-900 border border-dark-700 text-neutral-300 text-sm rounded focus:ring-accent focus:border-accent block p-2 outline-none transition-colors cursor-pointer"
+                          className="bg-light-900 dark:bg-dark-900 border border-light-700 dark:border-dark-700 text-gray-700 dark:text-neutral-300 text-sm rounded focus:ring-accent focus:border-accent block p-2 outline-none transition-colors cursor-pointer"
                           value={order.status}
                           onChange={(e) => handleStatusChange(order._id, e.target.value)}
                           disabled={pendingId === order._id}
@@ -168,7 +168,7 @@ const AdminDashboard = () => {
                         </select>
                         <button
                           onClick={() => handleDelete(order._id)}
-                          className="p-2 rounded-lg text-neutral-500 hover:text-red-500 hover:bg-red-500/10 transition-all duration-200 cursor-pointer disabled:opacity-50"
+                          className="p-2 rounded-lg text-gray-500 dark:text-neutral-500 hover:text-red-500 hover:bg-red-500/10 transition-all duration-200 cursor-pointer disabled:opacity-50"
                           title="Supprimer la commande"
                           disabled={pendingId === order._id}
                         >

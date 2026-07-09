@@ -39,16 +39,16 @@ const ClientDashboard = () => {
       case 'livre':
         return 'text-green-500 bg-green-500/10 border-green-500/20';
       default:
-        return 'text-neutral-400 bg-neutral-800 border-neutral-700';
+        return 'text-gray-500 dark:text-neutral-400 bg-gray-100 dark:bg-neutral-800 border-gray-200 dark:border-neutral-700';
     }
   };
 
   return (
     <div className="min-h-[calc(100vh-64px)] pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 border-b border-dark-700 pb-8">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 border-b border-light-700 dark:border-dark-700 pb-8">
         <div>
-          <h2 className="text-3xl font-bold text-white mb-1">Tableau de bord</h2>
-          <p className="text-neutral-400">Heureux de vous revoir, <span className="text-white font-medium">{user?.name}</span></p>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-1">Tableau de bord</h2>
+          <p className="text-gray-500 dark:text-neutral-400">Heureux de vous revoir, <span className="text-gray-900 dark:text-white font-medium">{user?.name}</span></p>
         </div>
         <div className="flex gap-3">
           <Button variant="ghost" onClick={logout}>Deconnexion</Button>
@@ -58,10 +58,10 @@ const ClientDashboard = () => {
         </div>
       </div>
 
-      <h3 className="text-xl font-semibold text-white mb-6">Vos commandes recentes</h3>
+      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Vos commandes recentes</h3>
 
       {error ? (
-        <div className="mb-6 rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+        <div className="mb-6 rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-600 dark:text-red-300">
           {error}
         </div>
       ) : null}
@@ -69,18 +69,18 @@ const ClientDashboard = () => {
       {loading ? (
         <div className="animate-pulse flex space-x-4">
           <div className="flex-1 space-y-4">
-            <div className="h-24 bg-dark-800 rounded-xl"></div>
-            <div className="h-24 bg-dark-800 rounded-xl"></div>
+            <div className="h-24 bg-light-800 dark:bg-dark-800 rounded-xl"></div>
+            <div className="h-24 bg-light-800 dark:bg-dark-800 rounded-xl"></div>
           </div>
         </div>
       ) : orders.length === 0 ? (
         <Card>
           <CardContent className="flex flex-col items-center justify-center p-12 text-center">
-            <div className="w-16 h-16 bg-dark-800 rounded-full flex items-center justify-center mb-4 text-neutral-500">
+            <div className="w-16 h-16 bg-light-800 dark:bg-dark-800 rounded-full flex items-center justify-center mb-4 text-gray-500 dark:text-neutral-500">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
             </div>
             <h4 className="text-xl font-semibold mb-2">Aucune commande</h4>
-            <p className="text-neutral-400 mb-6">Vous n&apos;avez pas encore passe de commande de design.</p>
+            <p className="text-gray-500 dark:text-neutral-400 mb-6">Vous n&apos;avez pas encore passe de commande de design.</p>
             <Link to="/catalogue">
               <Button>Explorer le catalogue</Button>
             </Link>
@@ -90,10 +90,10 @@ const ClientDashboard = () => {
         <div className="grid gap-4">
           {orders.map((order, index) => (
             <motion.div key={order._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.1 }}>
-              <Card hoverEffect className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-6 border-dark-700 bg-dark-800/40">
+              <Card hoverEffect className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-6 border-light-700 dark:border-dark-700 bg-light-800/40 dark:bg-dark-800/40">
                 <div className="mb-4 sm:mb-0">
-                  <h4 className="text-lg font-bold text-white mb-1">{order.service?.title || 'Service indisponible'}</h4>
-                  <p className="text-sm text-neutral-400">Commande le {new Date(order.createdAt).toLocaleDateString()}</p>
+                  <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{order.service?.title || 'Service indisponible'}</h4>
+                  <p className="text-sm text-gray-500 dark:text-neutral-400">Commande le {new Date(order.createdAt).toLocaleDateString()}</p>
                 </div>
                 <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
                   <span className={`px-3 py-1 rounded-full border text-xs font-semibold uppercase tracking-wider ${getStatusColor(order.status)}`}>

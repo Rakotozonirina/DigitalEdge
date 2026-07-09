@@ -43,10 +43,10 @@ const Catalog = () => {
   return (
     <div className="min-h-screen pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div className="text-center mb-16">
-        <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+        <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
           Notre Catalogue de Services
         </h2>
-        <p className="mt-4 max-w-2xl text-xl text-neutral-400 mx-auto">
+        <p className="mt-4 max-w-2xl text-xl text-gray-500 dark:text-neutral-400 mx-auto">
           Selectionnez le service graphique qui correspond a vos besoins et demarrons votre projet.
         </p>
       </div>
@@ -54,15 +54,15 @@ const Catalog = () => {
       {loading ? (
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {Array.from({ length: 4 }).map((_, index) => (
-            <div key={index} className="h-[360px] rounded-xl border border-dark-700 bg-dark-800/40 animate-pulse" />
+            <div key={index} className="h-[360px] rounded-xl border border-light-700 dark:border-dark-700 bg-light-800/40 dark:bg-dark-800/40 animate-pulse" />
           ))}
         </div>
       ) : error ? (
-        <div className="rounded-xl border border-red-500/20 bg-red-500/10 p-6 text-center text-red-300">
+        <div className="rounded-xl border border-red-500/20 bg-red-500/10 p-6 text-center text-red-600 dark:text-red-300">
           {error}
         </div>
       ) : services.length === 0 ? (
-        <div className="rounded-xl border border-dark-700 bg-dark-800/40 p-10 text-center text-neutral-400">
+        <div className="rounded-xl border border-light-700 dark:border-dark-700 bg-light-800/40 dark:bg-dark-800/40 p-10 text-center text-gray-500 dark:text-neutral-400">
           Aucun service n&apos;est disponible pour le moment.
         </div>
       ) : (
@@ -78,7 +78,7 @@ const Catalog = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="h-full"
               >
-                <Card hoverEffect className="h-full flex flex-col items-start text-left border-dark-700 bg-dark-800/40">
+                <Card hoverEffect className="h-full flex flex-col items-start text-left border-light-700 dark:border-dark-700 bg-light-800/40 dark:bg-dark-800/40">
                   {service.image ? (
                     <img
                       src={getUploadUrl(service.image)}
@@ -93,13 +93,13 @@ const Catalog = () => {
                     <CardTitle>{service.title}</CardTitle>
                   </CardHeader>
                   <CardContent className="flex-1 w-full">
-                    <p className="text-neutral-400 text-sm mb-4">{service.description}</p>
+                    <p className="text-gray-500 dark:text-neutral-400 text-sm mb-4">{service.description}</p>
                     {service.features?.length ? (
                       <div className="mb-4 flex flex-wrap gap-2">
                         {service.features.slice(0, 3).map((feature) => (
                           <span
                             key={`${service._id}-${feature}`}
-                            className="rounded-full border border-dark-700 bg-dark-900 px-3 py-1 text-xs text-neutral-300"
+                            className="rounded-full border border-light-700 dark:border-dark-700 bg-light-900 dark:bg-dark-900 px-3 py-1 text-xs text-gray-600 dark:text-neutral-300"
                           >
                             {feature}
                           </span>
@@ -107,7 +107,7 @@ const Catalog = () => {
                       </div>
                     ) : null}
                     <div className="mt-auto">
-                      <span className="text-3xl font-bold text-white">{service.price} €</span>
+                      <span className="text-3xl font-bold text-gray-900 dark:text-white">{service.price} €</span>
                     </div>
                   </CardContent>
                   <CardFooter className="w-full">
